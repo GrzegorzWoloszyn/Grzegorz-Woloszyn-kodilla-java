@@ -34,8 +34,14 @@ public class CollectionTestSuite {
         OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
         //When
         System.out.println("Testing the full list of numbers");
-        ArrayList result2 = oddNumbersExterminator.exterminate(oddNumbersExterminator.exterminate(new ArrayList<Integer>()));
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            numbers.add(i);
+        }
+        ArrayList result2 = oddNumbersExterminator.exterminate(oddNumbersExterminator.exterminate(numbers));
         //Then
         System.out.println("Empty List: " + result2.isEmpty());
+        System.out.println(result2);
+
     }
 }
