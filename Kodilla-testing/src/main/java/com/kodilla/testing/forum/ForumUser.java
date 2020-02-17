@@ -22,6 +22,7 @@ public class ForumUser {
     }
 
     public int getPostsQuantity() {
+
         return 100;
     }
 
@@ -30,11 +31,17 @@ public class ForumUser {
     }
 
     public ForumPost getPost(int postNumber) {
+
         return null;
     }
 
     public ForumComment getComment(int commentNumber) {
+
         return null;
+    }
+
+    public boolean removePost(ForumPost thePost) {
+        return true;
     }
 
     public boolean removeComment(ForumComment theComment) {

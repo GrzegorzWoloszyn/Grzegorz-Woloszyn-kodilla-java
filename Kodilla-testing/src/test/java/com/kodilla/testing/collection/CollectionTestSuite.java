@@ -6,9 +6,6 @@ import java.util.ArrayList;
 
 public class CollectionTestSuite {
 
-    private Object Integer;
-    private Object ArrayList;
-
     @Before
     public void before() {
         System.out.println("Test Case: beginn...");
