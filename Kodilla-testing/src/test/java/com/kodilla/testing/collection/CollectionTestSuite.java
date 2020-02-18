@@ -23,7 +23,7 @@ public class CollectionTestSuite {
         System.out.println("Testing empty list of numbers");
         ArrayList result = oddNumbersExterminator.exterminate(new ArrayList<>());
         //Then
-        System.out.println("Empty List: " + result.isEmpty());
+        Assert.assertEquals(new ArrayList<>(), result);
     }
     @Test
     public void testOddNumbersExterminatorNormalList() {
@@ -37,8 +37,7 @@ public class CollectionTestSuite {
         }
         ArrayList result2 = oddNumbersExterminator.exterminate(oddNumbersExterminator.exterminate(numbers));
         //Then
-        System.out.println("Empty List: " + result2.isEmpty());
-        System.out.println(result2);
+        Assert.assertNotEquals(numbers, result2);
 
     }
 }
