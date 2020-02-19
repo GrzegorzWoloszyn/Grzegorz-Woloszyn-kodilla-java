@@ -1,37 +1,44 @@
 package com.kodilla.testing.shape;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShapeCollector {
 
-    private List<Shape> shapes = new ArrayList<>();
+    private Shape shape;
+    private List<Shape> figureList = new ArrayList<Shape>();
 
-    public int addFigure(Shape shape) {
+    public List<Shape> addFigure(Shape shape) {
         if (shape != null) {
-            shapes.add(shape);
+            figureList.add(shape);
+            System.out.println("Figure added.");
         }
-        return  shapes.size();
-
+        return figureList;
     }
 
     public boolean removeFigure(Shape shape) {
-
-        if (shape == null) return false;
-        return shapes.remove(shape);
+        boolean result = false;
+        if(figureList.contains(shape)) {
+            figureList.remove(shape);
+            result = true;
+        }
+        return result;
     }
 
     public Shape getFigure(int figureNumber) {
         Shape shape = null;
-        if (figureNumber <= 0 && figureNumber < shapes.size()) {
-            shape = shapes.get(figureNumber);
+        if (figureNumber <= 0 && figureNumber < figureList.size()) {
+            shape = figureList.get(figureNumber);
         }
         return shape;
     }
 
-    public String showFigures(List<Shape> shapeList) {
+    public Shape showFigure(Shape shape) {
 
-        return "Shape/s: " + shapeList;
+        if (figureList.contains(shape)) {
+            return shape;
+        }
+        throw new IllegalArgumentException(String.format("The chosen shape doesn't exist in the list.", shape));
+
     }
-
 }

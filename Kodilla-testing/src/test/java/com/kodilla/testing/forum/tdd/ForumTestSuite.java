@@ -5,9 +5,10 @@ import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumUser;
 import org.junit.*;
 
-import javax.swing.plaf.basic.BasicFormattedTextFieldUI;
+
 
 public class ForumTestSuite {
+
     private static int testCounter = 0;
 
     @BeforeClass
