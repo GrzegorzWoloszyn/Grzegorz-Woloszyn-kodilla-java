@@ -106,7 +106,12 @@ public class ShapeCollectorTestSuite {
 
 =======
         Shape shape1 = new Circle("circle", 10);
+        Shape shape2 = new Triangle("triangle", 10, 12);
+        Shape shape3 = new Square("square", 10);
         //When
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
         shapeCollector.removeFigure(shape1);
         //Then
         Assert.assertEquals(2, figureList.size());
@@ -116,19 +121,28 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testGetFigure() {
         //Given
+        Shape shape1 = new Circle("circle", 10);
         Shape shape2 = new Triangle("triangle", 10, 12);
+        Shape shape3 = new Square("square", 10);
         //When
-        shapeCollector.getFigure(1);
-        //Thenn
-        Assert.assertEquals(shape2, new Triangle("triangle", 10, 12) );
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);;
+        //Then
+        Assert.assertEquals(shape2, shapeCollector.getFigure(1));
     }
 
     @Test
     public void testShowFigures() {
         //Given
+        Shape shape1 = new Circle("circle", 10);
+        Shape shape2 = new Triangle("triangle", 10, 12);
         Shape shape3 = new Square("square", 10);
         //When
-        shapeCollector.showFigure(shape3);
-        //Thenn
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
+        //Then
+        Assert.assertSame(shape3,shapeCollector.showFigure(shape3));
     }
 }

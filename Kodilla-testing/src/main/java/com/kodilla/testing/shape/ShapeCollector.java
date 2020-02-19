@@ -5,8 +5,22 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    private Shape shape;
-    private List<Shape> figureList = new ArrayList<Shape>();
+    private List<Shape> figureList = new ArrayList<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ShapeCollector)) return false;
+
+        ShapeCollector that = (ShapeCollector) o;
+
+        return figureList.equals(that.figureList);
+    }
+
+    @Override
+    public int hashCode() {
+        return figureList.hashCode();
+    }
 
     public List<Shape> addFigure(Shape shape) {
         if (shape != null) {
@@ -20,6 +34,7 @@ public class ShapeCollector {
         boolean result = false;
         if(figureList.contains(shape)) {
             figureList.remove(shape);
+            System.out.println("Figure removed");
             result = true;
         }
         return result;
