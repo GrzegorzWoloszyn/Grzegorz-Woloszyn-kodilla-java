@@ -5,13 +5,13 @@ import java.util.List;
 
 public class OddNumbersExterminator {
 
-    public ArrayList<Integer> exterminate (ArrayList<Integer> numbers) {
+    public List<Integer> exterminate (List<Integer> numbers) {
         List<Integer> evenNumbers = new ArrayList<>();
          for(Integer number : numbers) {
              if(number%2 == 0) {
                 evenNumbers.add(number);
              }
          }
-        return (java.util.ArrayList<Integer>) evenNumbers;
+        return evenNumbers;
     }
 }
