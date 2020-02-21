@@ -5,36 +5,20 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    private List<Shape> figureList = new ArrayList<>();
+    List<Shape> figuresList = new ArrayList<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof ShapeCollector)) return false;
-
-        ShapeCollector that = (ShapeCollector) o;
-
-        return figureList.equals(that.figureList);
-    }
-
-    @Override
-    public int hashCode() {
-        return figureList.hashCode();
-    }
-
-    public List<Shape> addFigure(Shape shape) {
-        if (shape != null) {
-            figureList.add(shape);
-            System.out.println("Figure added.");
+    public int addFigure(Shape shape) {
+        if ( shape != null) {
+            figuresList.add(shape);
         }
-        return figureList;
+        return  figuresList.size();
+
     }
 
     public boolean removeFigure(Shape shape) {
         boolean result = false;
-        if(figureList.contains(shape)) {
-            figureList.remove(shape);
-            System.out.println("Figure removed");
+        if (figuresList.contains(shape)) {
+            figuresList.remove(shape);
             result = true;
         }
         return result;
@@ -42,18 +26,15 @@ public class ShapeCollector {
 
     public Shape getFigure(int figureNumber) {
         Shape shape = null;
-        if (figureNumber <= 0 && figureNumber < figureList.size()) {
-            shape = figureList.get(figureNumber);
+        if (figureNumber <= 0 && figureNumber < figuresList.size()) {
+            shape = figuresList.get(figureNumber);
         }
         return shape;
     }
 
-    public Shape showFigure(Shape shape) {
-
-        if (figureList.contains(shape)) {
-            return shape;
-        }
-        throw new IllegalArgumentException(String.format("The chosen shape doesn't exist in the list.", shape));
-
+    public Shape showFigures(Shape shape) {
+        if (figuresList.contains(shape)) { }
+        return shape;
     }
+
 }
