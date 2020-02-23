@@ -1,6 +1,7 @@
 package com.kodilla.testing.library;
 
 import org.junit.Test;
+import org.mockito.BDDMockito;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,61 @@ public class BookDirectoryTestSuite {
         //Then
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
+    }
+
+    @Test
+    public void testListBooksInHandsOfWith0BooksLent() {
+        //Given
+        LibraryUser libraryUser = new LibraryUser("James", "Bond", "123456789");
+
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> bookLentList = new ArrayList<>();
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(bookLentList);
+        //When
+        List<Book> theLentBookList = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(0, theLentBookList.size());
+
+    }
+
+    @Test
+    public void testListBooksInHandsOfWith1BookLent() {
+        //Given
+        LibraryUser libraryUser = new LibraryUser("James", "Bond", "123456789");
+
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> bookLentListWith1Book = new ArrayList<>();
+        bookLentListWith1Book.add(new Book("Raport Pelikana", "John Grisham", 2017));
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(bookLentListWith1Book);
+        //When
+        List<Book> theLentBookList = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(1, bookLentListWith1Book.size());
+    }
+
+    @Test
+    public void testListBooksInHandsOfWith5BooksLent() {
+        //Given
+        LibraryUser libraryUser = new LibraryUser("James", "Bond", "123456789");
+
+        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        List<Book> bookLentListWith5Book = new ArrayList<>();
+        bookLentListWith5Book.add(new Book("Book1", "Author1", 2017));
+        bookLentListWith5Book.add(new Book("Book2", "Author2", 2012));
+        bookLentListWith5Book.add(new Book("Book3", "Author3", 2014));
+        bookLentListWith5Book.add(new Book("Book4", "Author4", 2019));
+        bookLentListWith5Book.add(new Book("Book5", "Author5", 2020));
+
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(bookLentListWith5Book);
+        //When
+        List<Book> theLentBookList = bookLibrary.listBooksInHandsOf(libraryUser);
+        //Then
+        assertEquals(5, bookLentListWith5Book.size());
     }
 
 

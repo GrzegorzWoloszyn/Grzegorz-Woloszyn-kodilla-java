@@ -8,6 +8,7 @@ public class BookLibrary {
     LibraryDatabase libraryDatabase;
 
     public BookLibrary(LibraryDatabase libraryDatabase) {
+
         this.libraryDatabase = libraryDatabase;
     }
 
@@ -21,5 +22,19 @@ public class BookLibrary {
         bookList = resultList;
 
         return bookList;
+    }
+
+    public boolean rentABook(LibraryUser libraryUser) {
+        if (libraryUser != null){
+        return true;
+        }
+        return false;
+    }
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        List<Book> bookLentList = new ArrayList<>();
+        if (rentABook(libraryUser)) {}
+        return bookLentList;
+
     }
 }
