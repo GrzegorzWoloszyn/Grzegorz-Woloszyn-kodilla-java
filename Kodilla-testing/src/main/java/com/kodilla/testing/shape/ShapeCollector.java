@@ -12,7 +12,6 @@ public class ShapeCollector {
             figuresList.add(shape);
         }
         return  figuresList.size();
-
     }
 
     public boolean removeFigure(Shape shape) {
@@ -36,5 +35,4 @@ public class ShapeCollector {
         if (figuresList.contains(shape)) { }
         return shape;
     }
-
 }
