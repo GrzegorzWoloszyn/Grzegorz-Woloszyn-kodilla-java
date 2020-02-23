@@ -10,7 +10,7 @@ public class ShapeCollectorTestSuite {
     Shape shape;
     ShapeCollector shapeCollector = new ShapeCollector();
     private static int testCounter = 0;
-    List<Shape> figuresList = new ArrayList<>();
+    private List<Shape> shapes = new ArrayList<>();
 
     @BeforeClass
     public static void beforeAllTests() {
@@ -54,7 +54,8 @@ public class ShapeCollectorTestSuite {
         //Given
         Shape shape = new Triangle("triangle", 20, 30);
         //When
-        figuresList.add(shape);
+        shapeCollector.addFigure(shape);
+        Shape result = shapeCollector.getFigure(0);
         //Then
         Assert.assertEquals("triangle", shape.getShapeName());
     }
@@ -62,15 +63,13 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testShowFigures() {
         //Given
-        Shape shape1 = new Triangle("triangle", 20, 30);
-        Shape shape2 = new Square("square", 25);
-        Shape shape3 = new Square("square", 25);
+        shapeCollector.addFigure(new Triangle("triangle", 20, 30));
+        shapeCollector.addFigure(new Square("square", 25));
+        shapeCollector.addFigure(new Square("square", 25));
         //When
-        figuresList.add(shape1);
-        figuresList.add(shape2);
-        figuresList.add(shape3);
+        String result = shapeCollector.showFigures(shapes);
         //Then
-        Assert.assertEquals(shape1, shapeCollector.showFigures(shape1) );
+        Assert.assertEquals(result, "Shape/s: " + shapes);
     }
 
 
