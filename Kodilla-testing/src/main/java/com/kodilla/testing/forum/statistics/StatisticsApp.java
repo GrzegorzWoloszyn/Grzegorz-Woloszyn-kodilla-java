@@ -21,9 +21,10 @@ public class StatisticsApp implements Statistics {
 
     @Override
     public List<String> userNames() {
-
+        int position = 0;
         for (String name :statistics.userNames()) {
-            usersName.add(name);
+            position++;
+            usersName.add("user #: " + position + ".git ");
         }
         return usersName;
     }

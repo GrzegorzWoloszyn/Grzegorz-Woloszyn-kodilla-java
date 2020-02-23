@@ -97,18 +97,14 @@ public class StatisticsAppTestSuite {
     @Test
     public void testCalculateAdvStatisticsWith0Users() {
         //Given
-
         //When
-
         //Then
     }
 
     @Test
     public void testCalculateAdvStatisticsWith100Users() {
         //Given
-
         //When
-
         //Then
     }
 

@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface Statistics {
     List<String> userNames();
-    int postsCount(int postNumber);
+    int postsCount();
     int commentsCount();
+
+
 }
