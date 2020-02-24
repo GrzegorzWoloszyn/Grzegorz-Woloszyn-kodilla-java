@@ -2,7 +2,10 @@ package com.kodilla.testing.forum.statistics;
 
 import org.junit.*;
 
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -40,9 +43,9 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
-        when(statisticsMock.postsCount()).thenReturn(posts.size());
+        when(statisticsMock.postsCount()).thenReturn(Collections.emptyList().size());
         //When
-        int result = statisticsMock.postsCount();
+        int result = statisticsExecutor.calculateAdvStatistics(statisticsMock.postsCount());
 
         //Then
         assertEquals(0, result);
@@ -56,9 +59,10 @@ public class StatisticsExecutorTestSuite {
         for (int i = 0; i <1000; i++) {
             posts.add("Post #" + i);
         }
+
         when(statisticsMock.postsCount()).thenReturn(posts.size());
         //When
-        int result = statisticsMock.postsCount();
+        int result = statisticsExecutor.calculateAdvStatistics(statisticsMock.postsCount());
 
         //Then
         assertEquals(1000, result);
@@ -70,11 +74,11 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
-        when(statisticsMock.commentsCount()).thenReturn(comments.size());
+        when(statisticsMock.commentsCount()).thenReturn(Collections.emptyList().size());
         //When
-        int commentsCount = statisticsMock.commentsCount();
+        int result = statisticsExecutor.calculateAdvStatistics(statisticsMock.commentsCount());
         //Then
-        assertEquals(0, commentsCount);
+        assertEquals(0, result);
     }
 
     @Test
@@ -93,6 +97,8 @@ public class StatisticsExecutorTestSuite {
         when(statisticsMock.postsCount()).thenReturn(posts.size());
 
         //When
+        int result1 = statisticsExecutor.calculateAdvStatistics(statisticsMock.postsCount());
+        int result2 = statisticsExecutor.calculateAdvStatistics(statisticsMock.commentsCount());
 
         //Then
 
@@ -113,6 +119,8 @@ public class StatisticsExecutorTestSuite {
         when(statisticsMock.commentsCount()).thenReturn(comments.size());
         when(statisticsMock.postsCount()).thenReturn(posts.size());
         //When
+        int result1 = statisticsExecutor.calculateAdvStatistics(statisticsMock.postsCount());
+        int result2 = statisticsExecutor.calculateAdvStatistics(statisticsMock.commentsCount());
         //Then
     }
 
@@ -122,9 +130,9 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
-        when(statisticsMock.userNames()).thenReturn(users);
+        when(statisticsMock.userNames()).thenReturn(Collections.emptyList());
         //When
-        int result = statisticsMock.userNames().size();
+        int result = statisticsExecutor.calculateAdvStatistics(statisticsMock.userNames().size());
         //Then
         assertEquals(0, result);
     }
@@ -139,7 +147,7 @@ public class StatisticsExecutorTestSuite {
         }
         when(statisticsMock.userNames()).thenReturn(users);
         //When
-        int result = statisticsMock.userNames().size();
+        int result = statisticsExecutor.calculateAdvStatistics(statisticsMock.userNames());
         //Then
         assertEquals(100, result);
     }
