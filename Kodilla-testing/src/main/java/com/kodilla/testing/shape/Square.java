@@ -12,7 +12,7 @@ public class Square implements Shape {
 
     public String getShapeName() {
 
-        return name;
+        return "Square";
     }
 
     public double getField()

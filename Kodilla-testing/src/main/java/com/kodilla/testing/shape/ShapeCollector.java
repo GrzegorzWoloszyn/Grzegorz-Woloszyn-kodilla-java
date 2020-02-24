@@ -31,8 +31,8 @@ public class ShapeCollector {
         return shape;
     }
 
-    public Shape showFigures(Shape shape) {
-        if (figuresList.contains(shape)) { }
-        return shape;
+    public String showFigures(Shape shape) {
+        if (figuresList.contains(shape.getShapeName())) { }
+        return shape.getShapeName();
     }
 }

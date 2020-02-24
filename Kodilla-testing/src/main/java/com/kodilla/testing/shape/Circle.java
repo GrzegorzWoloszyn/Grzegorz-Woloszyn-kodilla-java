@@ -12,7 +12,7 @@ public class Circle implements Shape {
     }
 
     public String getShapeName() {
-        return name;
+        return "Circle";
     }
 
     public double getField() {

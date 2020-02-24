@@ -14,7 +14,7 @@ public class Triangle implements Shape {
 
     public String getShapeName() {
 
-        return name;
+        return "Triangle";
     }
 
     public double getField() {
