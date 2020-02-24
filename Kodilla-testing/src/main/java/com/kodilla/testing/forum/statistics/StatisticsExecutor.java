@@ -3,7 +3,7 @@ package com.kodilla.testing.forum.statistics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StatisticsApp{
+public class StatisticsExecutor{
 
     Statistics statistics;
     private int usersCount, postsCount, commentsCount;
@@ -14,7 +14,8 @@ public class StatisticsApp{
     private List<String> comments = new ArrayList<>();
     private List<String> users = new ArrayList<>();
 
-    public StatisticsApp(Statistics statistics) {
+    public StatisticsExecutor(Statistics statistics) {
+
         this.statistics = statistics;
     }
 

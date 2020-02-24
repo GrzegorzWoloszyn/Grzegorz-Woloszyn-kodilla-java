@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class StatisticsAppTestSuite {
+public class StatisticsExecutorTestSuite {
     private static int testCounter = 0;
     private List<String> posts = new ArrayList<>();
     private List<String> comments = new ArrayList<>();
@@ -18,11 +18,13 @@ public class StatisticsAppTestSuite {
 
     @BeforeClass
     public static void beforeAllTests() {
+
         System.out.println("This is the beginning of tests.");
     }
 
     @AfterClass
     public static void afterAllTests() {
+
         System.out.println("All tests are finished.");
     }
 
@@ -36,7 +38,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWith0Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
         when(statisticsMock.postsCount()).thenReturn(posts.size());
         //When
@@ -50,7 +52,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWith1000Posts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         for (int i = 0; i <1000; i++) {
             posts.add("Post #" + i);
         }
@@ -66,7 +68,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWith0Comments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
         when(statisticsMock.commentsCount()).thenReturn(comments.size());
         //When
@@ -79,7 +81,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWithLessCommentsThanPosts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         for (int i = 0; i <100; i++) {
             posts.add("Post #" + i);
         }
@@ -100,7 +102,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWithMoreCommentsThanPosts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         for (int i = 0; i <50; i++) {
             posts.add("Post #" + i);
         }
@@ -118,7 +120,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWith0Users() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
 
         when(statisticsMock.userNames()).thenReturn(users);
         //When
@@ -131,7 +133,7 @@ public class StatisticsAppTestSuite {
     public void testCalculateAdvStatisticsWith100Users() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         for (int i = 0; i <100; i++) {
             users.add("User #" + i);
         }
@@ -145,8 +147,8 @@ public class StatisticsAppTestSuite {
     @Test
     public void testShowStatistics() {
         Statistics statisticsMock = mock(Statistics.class);
-        StatisticsApp statisticsApp = new StatisticsApp(statisticsMock);
-        statisticsApp.showStatistics();
+        StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
+        statisticsExecutor.showStatistics();
     }
 
 }
