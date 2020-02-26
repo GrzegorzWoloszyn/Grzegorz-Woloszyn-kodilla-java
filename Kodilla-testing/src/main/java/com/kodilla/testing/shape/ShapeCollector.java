@@ -5,34 +5,34 @@ import java.util.List;
 
 public class ShapeCollector {
 
-    List<Shape> figuresList = new ArrayList<>();
+    private List<Shape> shapes = new ArrayList<>();
 
-    public int addFigure(Shape shape) {
+    public boolean addFigure(Shape shape) {
         if ( shape != null) {
-            figuresList.add(shape);
+            shapes.add(shape);
+            return true;
         }
-        return  figuresList.size();
+        return false;
     }
 
     public boolean removeFigure(Shape shape) {
-        boolean result = false;
-        if (figuresList.contains(shape)) {
-            figuresList.remove(shape);
-            result = true;
+        if ( shape != null) {
+            return shapes.remove(shape);
         }
-        return result;
+        return false;
     }
 
     public Shape getFigure(int figureNumber) {
         Shape shape = null;
-        if (figureNumber <= 0 && figureNumber < figuresList.size()) {
-            shape = figuresList.get(figureNumber);
+        if (figureNumber >= 0 && figureNumber <= shapes.size()) {
+            shape = shapes.get(figureNumber);
         }
         return shape;
     }
 
-    public String showFigures(Shape shape) {
-        if (figuresList.contains(shape.getShapeName())) { }
-        return shape.getShapeName();
+    public void showFigures() {
+        for (Shape shape : shapes) {
+            System.out.println(shape);
+        }
     }
 }

@@ -2,17 +2,17 @@ package com.kodilla.testing.shape;
 
 public class Circle implements Shape {
 
-    final double PI = 3.14;
-    private String name;
-    private int radius;
+    private static final double PI = 3.14;
+    private static final String name = "circle";
 
-    public Circle(String name, int radius) {
-        this.name = name;
-        this.radius = radius;
+    private final int radius;
+
+    public Circle(int radius) {
+         this.radius = radius;
     }
 
-    public String getShapeName() {
-        return "Circle";
+    public String getName() {
+        return name;
     }
 
     public double getField() {
@@ -27,8 +27,7 @@ public class Circle implements Shape {
         Circle circle = (Circle) o;
 
         if (Double.compare(circle.PI, PI) != 0) return false;
-        if (radius != circle.radius) return false;
-        return name.equals(circle.name);
+        return radius == circle.radius;
     }
 
     @Override
@@ -37,8 +36,12 @@ public class Circle implements Shape {
         long temp;
         temp = Double.doubleToLongBits(PI);
         result = (int) (temp ^ (temp >>> 32));
-        result = 31 * result + name.hashCode();
         result = 31 * result + radius;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + "(" + radius + ")";
     }
 }

@@ -2,22 +2,20 @@ package com.kodilla.testing.shape;
 
 public class Square implements Shape {
 
-    private String name;
-    private int sideLength;
+    private static final String name = "square";
 
-    public Square(String name, int sideLength) {
-        this.name = name;
-        this.sideLength = sideLength;
+    private final int side;
+
+    public Square(int side) {
+         this.side = side;
     }
 
-    public String getShapeName() {
-
-        return "Square";
+    public String getName() {
+        return name;
     }
 
-    public double getField()
-    {
-        return sideLength * sideLength;
+    public double getField() {
+        return side * side;
     }
 
     @Override
@@ -27,14 +25,16 @@ public class Square implements Shape {
 
         Square square = (Square) o;
 
-        if (sideLength != square.sideLength) return false;
-        return name.equals(square.name);
+        return side == square.side;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + sideLength;
-        return result;
+        return side;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + "(" + side + ")";
     }
 }

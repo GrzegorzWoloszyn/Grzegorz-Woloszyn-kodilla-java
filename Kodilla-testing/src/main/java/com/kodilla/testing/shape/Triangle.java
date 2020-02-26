@@ -2,24 +2,22 @@ package com.kodilla.testing.shape;
 
 public class Triangle implements Shape {
 
-    private String name;
-    private int sideLengthA;
-    private int sideLengthH;
+    private static final String name = "triangle";
 
-    public Triangle(String name, int sideLengthA, int sideLengthH) {
-        this.name = name;
-        this.sideLengthA = sideLengthA;
-        this.sideLengthH = sideLengthH;
+    private final int base;
+    private final int height;
+
+    public Triangle(int base, int height) {
+        this.base = base;
+        this.height = height;
     }
 
-    public String getShapeName() {
-
-        return "Triangle";
+    public String getName() {
+        return name;
     }
 
     public double getField() {
-
-        return (sideLengthA * sideLengthH) /2;
+        return (base * height) / 2.0;
     }
 
     @Override
@@ -29,16 +27,19 @@ public class Triangle implements Shape {
 
         Triangle triangle = (Triangle) o;
 
-        if (sideLengthA != triangle.sideLengthA) return false;
-        if (sideLengthH != triangle.sideLengthH) return false;
-        return name.equals(triangle.name);
+        if (base != triangle.base) return false;
+        return height == triangle.height;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + sideLengthA;
-        result = 31 * result + sideLengthH;
+        int result = base;
+        result = 31 * result + height;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + "(" + base + "," + height + ")";
     }
 }
