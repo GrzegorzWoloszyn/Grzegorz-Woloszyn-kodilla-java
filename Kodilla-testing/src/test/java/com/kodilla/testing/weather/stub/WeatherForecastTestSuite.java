@@ -4,12 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class WeatherForecastTestSuite {
-
     @Test
-    public void testCalculateForecastWithStub() {
+    public void testCalculateForecastWihtStub() {
         //Given
-        Temperatures temperatures = new TemperaturesStub();
-        WeatherForecast weatherForecast = new WeatherForecast(temperatures);
+        Tempreratures tempreratures = new TemperaturesStub();
+        WeatherForecast weatherForecast  = new WeatherForecast(tempreratures);
         //When
         int quantityOfSensors = weatherForecast.calculateForecast().size();
         //Then
