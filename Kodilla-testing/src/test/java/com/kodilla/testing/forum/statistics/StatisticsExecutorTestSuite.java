@@ -13,11 +13,9 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-
 public class StatisticsExecutorTestSuite {
 
     private static int testCounter;
-    private List<String> users = new ArrayList<>();
 
     @BeforeClass
     public static void beforeAllTests() {
@@ -41,7 +39,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
 
         when(statisticsMock.postCount()).thenReturn(0);
-        when(statisticsMock.username()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
+        when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When/Then
@@ -54,7 +52,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
 
         when(statisticsMock.postCount()).thenReturn(1000);
-        when(statisticsMock.username()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
+        when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
@@ -68,7 +66,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
 
         when(statisticsMock.commentsCount()).thenReturn(0);
-        when(statisticsMock.username()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
+        when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
@@ -82,7 +80,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(10);
         when(statisticsMock.postCount()).thenReturn(100);
-        when(statisticsMock.username()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
+        when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
@@ -95,7 +93,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.postCount()).thenReturn(10);
-        when(statisticsMock.username()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
+        when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
@@ -108,7 +106,7 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.postCount()).thenReturn(10);
-        when(statisticsMock.username()).thenReturn(Collections.emptyList());
+        when(statisticsMock.usernames()).thenReturn(Collections.emptyList());
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
@@ -121,11 +119,12 @@ public class StatisticsExecutorTestSuite {
         Statistics statisticsMock = mock(Statistics.class);
         when(statisticsMock.commentsCount()).thenReturn(100);
         when(statisticsMock.postCount()).thenReturn(10);
+        List<String> users = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             users.add(i + ". user");
         }
 
-        when(statisticsMock.username()).thenReturn(users);
+        when(statisticsMock.usernames()).thenReturn(users);
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
