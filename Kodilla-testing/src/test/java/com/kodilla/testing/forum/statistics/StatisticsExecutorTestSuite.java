@@ -1,9 +1,6 @@
 package com.kodilla.testing.forum.statistics;
 
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,9 +39,10 @@ public class StatisticsExecutorTestSuite {
         when(statisticsMock.usernames()).thenReturn(Arrays.asList("John", "Poll", "Eva", "David", "Alex"));
 
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
-        //When/Then
+        //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertEquals(0, statisticsMock.postCount());
     }
 
     @Test
@@ -57,7 +55,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertEquals(1000, statisticsMock.postCount());
     }
 
     @Test
@@ -71,7 +70,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertEquals(0, statisticsMock.commentsCount());
 
     }
 
@@ -85,7 +85,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertTrue(statisticsMock.postCount() > statisticsMock.commentsCount());
     }
 
     @Test
@@ -98,7 +99,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertTrue(statisticsMock.postCount() < statisticsMock.commentsCount());
     }
 
     @Test
@@ -111,7 +113,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertEquals(0, statisticsMock.usernames().size());
     }
 
     @Test
@@ -129,7 +132,8 @@ public class StatisticsExecutorTestSuite {
         StatisticsExecutor statisticsExecutor = new StatisticsExecutor(statisticsMock);
         //When
         statisticsExecutor.calculateAdvStatistics(statisticsMock);
-        statisticsExecutor.showStatistics();
+        //Then
+        Assert.assertEquals(100, statisticsMock.usernames().size());
     }
 
 }

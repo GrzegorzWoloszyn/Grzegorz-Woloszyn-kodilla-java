@@ -17,12 +17,12 @@ public class StatisticsExecutor {
         posts = statistics.postCount();
         comments = statistics.commentsCount();
         if (posts != 0) {
-            averageCountOfCommentsPerPost = comments / posts;
+            averageCountOfCommentsPerPost = (double)comments / posts;
         }else averageCountOfCommentsPerPost = -1;
 
         if(userSize != 0) {
-            averageCountOfUsersComments = comments / userSize;
-            averageCountOfPostsPerUser = posts / userSize;
+            averageCountOfUsersComments = (double)comments / userSize;
+            averageCountOfPostsPerUser = (double)posts / userSize;
         }else {
             averageCountOfUsersComments = -1;
             averageCountOfPostsPerUser = -1;
