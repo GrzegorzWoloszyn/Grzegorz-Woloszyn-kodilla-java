@@ -9,16 +9,16 @@ public class StreamMain {
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
         System.out.print("Text befor embellishment: pisać jak kura pazurem. ");
-        poemBeautifier.beautify("pisać jak kura pazurem.", String -> String.toUpperCase());
+        poemBeautifier.beautify("pisać jak kura pazurem.", s -> s.toUpperCase());
 
         System.out.print("Text befor embellishment KOBYLA MA MALY BOK. ");
-        poemBeautifier.beautify("KOBYLA MA MALY BOK.", String -> String.toLowerCase());
+        poemBeautifier.beautify("KOBYLA MA MALY BOK.", s -> s.toLowerCase());
 
         System.out.print("Text befor embellishment: ala ma kota.");
-        poemBeautifier.beautify("ala ma kota", String -> String.replace('a', 'e'));
+        poemBeautifier.beautify("ala ma kota", s -> s.replace('a', 'e'));
 
         System.out.print("Text befor embellishment: 'Mój jest ten kawałek podłogi.'");
-        poemBeautifier.beautify("'Mój jest ten kawałek pogłogi.'", String -> String.concat(" Wykonawca: Mr. Zoob"));
+        poemBeautifier.beautify("'Mój jest ten kawałek pogłogi.'", s -> s.concat(" Wykonawca: Mr. Zoob"));
 
 
 
