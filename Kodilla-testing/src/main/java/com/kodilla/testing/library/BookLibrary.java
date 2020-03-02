@@ -18,4 +18,13 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
+
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+
+        if (resultList.size() == 0 || resultList.size() == 1 || resultList.size() == 5) ;
+
+    return resultList;
+    }
+
 }
