@@ -1,23 +1,24 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.reference.FuctionalCalculator;
 
 public class StreamMain {
     public static void main(String[] args) {
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
+        PoemBeautifier poemBeautifier = new PoemBeautifier();
 
-        System.out.println("Calculating expressions with lambdas");
-        expressionExecutor.executeExpression(10, 5, (a,b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a,b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a,b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a,b) -> a / b);
+        System.out.print("Text befor embellishment: pisać jak kura pazurem. ");
+        poemBeautifier.beautify("pisać jak kura pazurem.", String -> String.toUpperCase());
 
-        System.out.println("Calculating expressions with method reference");
-        expressionExecutor.executeExpression(10, 5, FuctionalCalculator::multiplayAByB);
-        expressionExecutor.executeExpression(10, 5, FuctionalCalculator::subAFromB);
-        expressionExecutor.executeExpression(10, 5, FuctionalCalculator::divideAByB);
-        expressionExecutor.executeExpression(10, 5, FuctionalCalculator::addAToB);
+        System.out.print("Text befor embellishment KOBYLA MA MALY BOK. ");
+        poemBeautifier.beautify("KOBYLA MA MALY BOK.", String -> String.toLowerCase());
+
+        System.out.print("Text befor embellishment: ala ma kota.");
+        poemBeautifier.beautify("ala ma kota", String -> String.replace('a', 'e'));
+
+        System.out.print("Text befor embellishment: 'Mój jest ten kawałek podłogi.'");
+        poemBeautifier.beautify("'Mój jest ten kawałek pogłogi.'", String -> String.concat(" Wykonawca: Mr. Zoob"));
 
 
 
