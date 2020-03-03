@@ -17,6 +17,7 @@ public class Forum {
         forumUserList.add(new ForumUser(108, "Krysia", 'F', 2010, 9,20, 10 ));
         forumUserList.add(new ForumUser(109, "Marcel", 'M', 1700, 9,20, 21 ));
         forumUserList.add(new ForumUser(110, "Asia", 'F', 1410, 11,20, 10 ));
+        forumUserList.add(new ForumUser(110, "Jakub", 'M', 2000, 02,20, 7 ));
     }
 
     public List<ForumUser> getUserList() {
