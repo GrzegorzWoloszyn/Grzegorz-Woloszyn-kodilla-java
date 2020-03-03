@@ -1,41 +1,26 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.book.Book;
-import com.kodilla.stream.book.BookDirectory;
-
-import java.util.List;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
+import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        BookDirectory theBookDirectory = new BookDirectory();
-        List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .collect(Collectors.toList());
+        Forum forum = new Forum();
+        Date limitDate = new Date();
 
-        System.out.println("# elements in the list: " + theResultListOfBooks.size());
-        theResultListOfBooks.stream()
-                .forEach(s -> System.out.println(s));
+        Map<Integer, ForumUser> theResultMapOfForumusers = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getBd().getYear() < 2000)
+                .filter(forumUser -> forumUser.getSex() == 'M')
+                .filter(forumUser -> forumUser.getPostCount() >= 1)
+                .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser));
 
-        Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .collect(Collectors.toMap(Book::getSignature, book -> book));
-
-        System.out.println("# elements in the map: " + theResultMapOfBooks.size());
-        theResultMapOfBooks.entrySet().stream()
-                .map(entry -> entry.getKey() + ": " + entry.getValue())
-                .forEach(s -> System.out.println(s));
-        System.out.println();
-
-        String theResultStringOfBooks = theBookDirectory.getList().stream()
-                .filter(book -> book.getYearOfPublication() > 2005)
-                .map(Book::toString)
-                .collect(Collectors.joining(",\n", "<<", ">>" ));
-
-        System.out.println(theResultStringOfBooks);
-
-
+        System.out.println("# users in the map: " + theResultMapOfForumusers.size());
+        theResultMapOfForumusers.entrySet().stream()
+                .map(entry -> entry.getKey() + " >> " + entry.getValue())
+                .forEach(System.out::println);
     }
 
 }
