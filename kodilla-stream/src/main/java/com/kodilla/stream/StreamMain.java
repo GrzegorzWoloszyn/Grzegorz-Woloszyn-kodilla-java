@@ -1,26 +1,41 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.iterate.NumbersGenerator;
+import com.kodilla.stream.book.Book;
+import com.kodilla.stream.book.BookDirectory;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        PoemBeautifier poemBeautifier = new PoemBeautifier();
+        BookDirectory theBookDirectory = new BookDirectory();
+        List<Book> theResultListOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .collect(Collectors.toList());
 
-        System.out.print("Text befor embellishment: pisać jak kura pazurem. ");
-        poemBeautifier.beautify("pisać jak kura pazurem.", s -> s.toUpperCase());
+        System.out.println("# elements in the list: " + theResultListOfBooks.size());
+        theResultListOfBooks.stream()
+                .forEach(s -> System.out.println(s));
 
-        System.out.print("Text befor embellishment KOBYLA MA MALY BOK. ");
-        poemBeautifier.beautify("KOBYLA MA MALY BOK.", s -> s.toLowerCase());
+        Map<String, Book> theResultMapOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .collect(Collectors.toMap(Book::getSignature, book -> book));
 
-        System.out.print("Text befor embellishment: ala ma kota.");
-        poemBeautifier.beautify("ala ma kota", s -> s.replace('a', 'e'));
+        System.out.println("# elements in the map: " + theResultMapOfBooks.size());
+        theResultMapOfBooks.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(s -> System.out.println(s));
+        System.out.println();
 
-        System.out.print("Text befor embellishment: 'Mój jest ten kawałek podłogi.'");
-        poemBeautifier.beautify("'Mój jest ten kawałek pogłogi.'", s -> s.concat(" Wykonawca: Mr. Zoob"));
+        String theResultStringOfBooks = theBookDirectory.getList().stream()
+                .filter(book -> book.getYearOfPublication() > 2005)
+                .map(Book::toString)
+                .collect(Collectors.joining(",\n", "<<", ">>" ));
+
+        System.out.println(theResultStringOfBooks);
 
 
-        System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
     }
+
 }
