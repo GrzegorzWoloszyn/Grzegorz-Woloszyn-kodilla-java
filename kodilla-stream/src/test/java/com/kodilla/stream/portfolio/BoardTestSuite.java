@@ -1,13 +1,13 @@
 package com.kodilla.stream.portfolio;
 
-import org.graalvm.compiler.lir.LIRInstruction;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -103,5 +103,44 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2,longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //Given
+        Board project = prepareTestData();
+        //When
+        List<TaskList> tasksList = new LinkedList<>();
+        tasksList.add(new TaskList("In progress"));
+
+        //realisation with two streams
+        long sumOfDays = project.getTaskLists().stream()
+                .filter(tasksList::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToLong(t -> ChronoUnit.DAYS.between(t.getCreated(), LocalDate.now()))
+                .sum();
+
+        double quantityOfTasks = project.getTaskLists().stream()
+                .filter(tasksList::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> t.getCreated().isBefore(LocalDate.now().plusDays(1)))
+                .count();
+
+        double averageNumberOfDaysOfTaskPerformance = sumOfDays / quantityOfTasks;
+
+        Assert.assertEquals(30, sumOfDays, 0);
+        Assert.assertEquals(3, quantityOfTasks, 0);
+        Assert.assertEquals(10, averageNumberOfDaysOfTaskPerformance, 0);
+
+        //realisation with one stream
+        double average = project.getTaskLists().stream()
+                .filter(tasksList::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .mapToLong(t -> ChronoUnit.DAYS.between(t.getCreated(), LocalDate.now()))
+                .average()
+                .orElse(0);
+
+        Assert.assertEquals(10, average, 0);
+
     }
 }
