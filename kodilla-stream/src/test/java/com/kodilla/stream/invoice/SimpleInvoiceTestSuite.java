@@ -1,4 +1,4 @@
-package com.lkodilla.stream.invoice;
+package com.kodilla.stream.invoice;
 
 import com.kodilla.stream.invoice.simple.SimpleInvoice;
 import com.kodilla.stream.invoice.simple.SimpleItem;
