@@ -15,13 +15,12 @@ public class FirstChallenge {
         FirstChallenge firstChallenge = new FirstChallenge();
 
         try {
-            result = firstChallenge.divide(3, 0);
-            System.out.println(result);
+            result = firstChallenge.divide(3, 10);
 
         } catch (ArithmeticException e) {
             System.out.println("The divider must be larger than zero");
         } finally {
-            System.out.println("Try again.");
+            System.out.println(result);
         }
     }
 }
