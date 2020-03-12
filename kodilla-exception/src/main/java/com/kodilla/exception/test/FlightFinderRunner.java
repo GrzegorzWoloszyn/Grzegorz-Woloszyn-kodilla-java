@@ -4,13 +4,16 @@ public class FlightFinderRunner {
     public static void main(String[] args) {
 
         FlightFinder flightFinder = new FlightFinder();
+        Flight lisbona = new Flight("Lublin", "Lisbona");
+        Flight berlin = new Flight("Lublin", "Berlin");
+        Flight warsaw = new Flight("Lublin", "Warsaw");
 
-        try {
-            flightFinder.findFlight(new Flight("Wroclaw,", "London"));
+        try  {
+            System.out.println("Open airports: " + flightFinder.findFlight(lisbona));
+;
         } catch (RouteNotFoundException e) {
-            System.out.println("The chosen airport ist unavailable");
+            System.out.println("The selected airport is not on the list");;
         }
-
 
     }
 }
