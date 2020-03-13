@@ -19,7 +19,7 @@ public class FlightFinder {
             flights.put("Madrit", false);
 
             if (flights.containsKey(flight.getArrivalAirport())) {
-                if (flights.get(flight.getArrivalAirport()).equals(true)){
+                if (flights.get(flight.getArrivalAirport())){
                    opensAirs.add(flight);
                 }
             } else {

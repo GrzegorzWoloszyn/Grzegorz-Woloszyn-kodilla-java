@@ -9,7 +9,7 @@ public class FlightFinderRunner {
         Flight warsaw = new Flight("Lublin", "Warsaw");
 
         try  {
-            System.out.println("Open airports: " + flightFinder.findFlight(lisbona));
+            System.out.println("Open airports: " + flightFinder.findFlight(warsaw));
 ;
         } catch (RouteNotFoundException e) {
             System.out.println("The selected airport is not on the list");;
