@@ -32,7 +32,7 @@ public class MovieStore {
         MovieStore movieStore = new MovieStore();
 
         String result = movieStore.getMovies().entrySet().stream()
-                .map(entry -> entry.getValue().get(0) + " ! "+ entry.getValue().get(1))
+                .flatMap(s -> (s.getValue()).stream())
                 .collect(Collectors.joining(" ! ", "All movies: ", "."));
 
         System.out.println(result);
