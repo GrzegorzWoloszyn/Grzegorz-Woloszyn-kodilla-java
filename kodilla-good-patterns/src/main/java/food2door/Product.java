@@ -3,40 +3,20 @@ package food2door;
 public class Product {
 
     private String productName;
-    private String productCategory;
-    private double productPrice;
-    private int productAmount;
-    private boolean isAvailable;
+    private String category;
 
-    public Product(String productName, String productCategory, double productPrice, int productAmount,  boolean isAvailable) {
+
+    public Product(String productName, String category) {
         this.productName = productName;
-        this.productCategory = productCategory;
-        this.productPrice = productPrice;
-        this.productAmount = productAmount;
-        this.isAvailable = isAvailable;
-    }
+        this.category = category;
+     }
 
     public String getProductName() {
         return productName;
     }
 
     public String getProductCategory() {
-        return productCategory;
+        return category;
     }
 
-    public double getProductPrice() {
-        return productPrice;
-    }
-
-    public int getProductAmount() {
-        return productAmount;
-    }
-
-    public boolean isAvailable() {
-        return isAvailable;
-    }
-
-    public double getOrderValue() {
-        return productAmount * productPrice;
-    }
 }

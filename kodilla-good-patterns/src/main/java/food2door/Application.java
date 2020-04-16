@@ -3,11 +3,10 @@ package food2door;
 public class Application {
 
     public static void main(String[] args) {
-        ManufacturerRequestRetriever manufacturerRequestRetriever = new ManufacturerRequestRetriever();
-        ManufacturerRequest manufacturerRequest = manufacturerRequestRetriever.retrieve();
 
-
-        ContractProcessor contractProcessor = new ContractProcessor();
-        contractProcessor.process();
+        CheckOrder checkOrder = new CheckOrder();
+        Producer producer = checkOrder.check("Chia", 6.6);
+        OrderProcessor orderProcessor = new OrderProcessor(new InformationService(), new OrderRepository());
+        orderProcessor.run(producer);
     }
 }

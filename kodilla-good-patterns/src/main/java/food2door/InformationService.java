@@ -2,7 +2,14 @@ package food2door;
 
 import java.time.LocalDateTime;
 
-public interface InformationService {
+public class InformationService {
 
-    void inform(User user, Product product, LocalDateTime date);
+    public void inform(String product, Producer producer, LocalDateTime date) {
+        System.out.println("Order date: " + date + ". Ordered products: " + product + ", producer: " + producer);
+    }
+
+    @Override
+    public String toString() {
+        return "InformationService{}";
+    }
 }

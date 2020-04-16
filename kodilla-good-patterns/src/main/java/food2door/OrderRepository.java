@@ -1,5 +1,9 @@
 package food2door;
 
-public interface OrderRepository {
-    boolean createOrder(Manufacturer manufacturer, User user, Product product);
+public class OrderRepository {
+
+    public boolean createOrder() {
+        System.out.println("Order finished.");
+        return true;
+    }
 }

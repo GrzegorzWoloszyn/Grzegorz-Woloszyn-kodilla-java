@@ -1,7 +1,5 @@
 package food2door;
 
-import java.time.LocalDateTime;
-
 public class User {
 
     private String name;
@@ -21,4 +19,11 @@ public class User {
         return surname;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
 }
