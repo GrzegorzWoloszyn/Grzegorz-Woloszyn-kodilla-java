@@ -6,7 +6,6 @@ public class OrderProcessor {
     InformationService informationService;
     OrderRepository orderRepository;
 
-
     public OrderProcessor(InformationService informationService, OrderRepository orderRepository) {
         this.informationService = informationService;
         this.orderRepository = orderRepository;
