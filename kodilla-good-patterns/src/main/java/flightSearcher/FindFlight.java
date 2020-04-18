@@ -29,11 +29,18 @@ public class FindFlight {
                 .collect(Collectors.toList());
     }
 
-    public  List<Pair<Flight, Flight>> findConnectingFlight() {
-        List<Pair<Flight, Flight>> pairList = createFlightList.getAllPairs();
+//    public  List<Pair<Flight, Flight>> findConnectingFlight() {
+//        List<Pair<Flight, Flight>> pairList = createFlightList.getAllPairs();
+//        return pairList.stream()
+//                .filter(fP -> flight.getArrival().equals(fP.getValue().getArrival()) && fP.getKey().getArrival().equals(fP.getValue().getDeparture()))
+//               .collect(Collectors.toList());
+//    }
 
-        return pairList.stream()
-                .filter(fP -> flight.getArrival().equals(fP.getValue().getArrival()) && fP.getKey().getArrival().equals(fP.getValue().getDeparture()))
-               .collect(Collectors.toList());
+    public  List<Flight>  findConnectingFlight2() {
+        List<Flight> flights = createFlightList.getAllFlights();
+        return flights.stream()
+                .filter(fp -> flight.getDeparture().equals(fp.getDeparture()))
+                .filter(f -> f.getArrival().equals(flight.getArrival()))
+                .collect(Collectors.toList());
     }
 }

@@ -22,8 +22,12 @@ public class FlightProcessor {
         return findFlight.findFlightTo();
     }
 
-    public List<Pair<Flight, Flight>> processForConnectedFlights() {
-        return findFlight.findConnectingFlight();
+//    public List<Pair<Flight, Flight>> processForConnectedFlights() {
+//        return findFlight.findConnectingFlight();
+//    }
+
+    public List<Flight> processForConnectedFlights() {
+        return findFlight.findConnectingFlight2();
     }
 
 
