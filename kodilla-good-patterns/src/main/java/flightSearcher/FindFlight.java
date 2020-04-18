@@ -1,7 +1,6 @@
 package flightSearcher;
 
 import javafx.util.Pair;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,12 +29,11 @@ public class FindFlight {
                 .collect(Collectors.toList());
     }
 
-     public  List<Pair<Flight, Flight>> findConnectingFlight() {
+    public  List<Pair<Flight, Flight>> findConnectingFlight() {
         List<Pair<Flight, Flight>> pairList = createFlightList.getAllPairs();
 
-         return pairList.stream()
-                 .filter(fP -> fP.getKey().getArrival().equals(flight.getArrival()) && fP.getValue().getDeparture().equals(fP.getKey().getArrival()))
-                 .collect(Collectors.toList());
-
+        return pairList.stream()
+                .filter(fP -> flight.getArrival().equals(fP.getValue().getArrival()) && fP.getKey().getArrival().equals(fP.getValue().getDeparture()))
+               .collect(Collectors.toList());
     }
 }
