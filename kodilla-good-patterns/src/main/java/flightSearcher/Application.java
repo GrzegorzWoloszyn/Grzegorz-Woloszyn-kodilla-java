@@ -7,7 +7,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
 
-        Flight flight = new Flight("Warszawa", "Londyn");
+        Flight flight = new Flight("Lódź", "Londyn");
         FlightProcessor flightProcessor = new FlightProcessor(new CreateFlightList(), new FindFlight(flight));
 
         List<Flight> flightsFrom = flightProcessor.processForDeparture();

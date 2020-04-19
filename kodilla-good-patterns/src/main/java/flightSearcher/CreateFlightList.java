@@ -17,10 +17,10 @@ public class CreateFlightList {
                 flights.add(new Flight("Lódź", "Londyn"));
                 flights.add(new Flight("Kraków", "Londyn"));
                 flights.add(new Flight("Lódź", "Kraków"));
+                flights.add(new Flight("Wilno", "Londyn"));
 
                 return new ArrayList<>(flights);
         }
-
 
         public List<Pair<Flight, Flight>> getAllPairs() {
 
