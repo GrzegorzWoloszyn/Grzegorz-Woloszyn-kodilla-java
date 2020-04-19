@@ -48,6 +48,8 @@ public class FindFlight {
                     .distinct()
                     .forEach(finalList::add);
         }
-        return finalList;
+        return finalList.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
