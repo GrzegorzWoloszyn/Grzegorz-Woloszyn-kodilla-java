@@ -3,20 +3,20 @@ package flightSearcher;
 import java.util.Objects;
 
 public class Flight {
-    private String departure;
-    private String arrival;
+    private String from;
+    private String to;
 
-    public Flight(String departure, String arrival) {
-        this.departure = departure;
-        this.arrival = arrival;
+    public Flight(String from, String to) {
+        this.from = from;
+        this.to = to;
     }
 
-    public String getDeparture() {
-        return departure;
+    public String getFrom() {
+        return from;
     }
 
-    public String getArrival() {
-        return arrival;
+    public String getTo() {
+        return to;
     }
 
     @Override
@@ -26,22 +26,19 @@ public class Flight {
 
         Flight flight = (Flight) o;
 
-        if (!Objects.equals(departure, flight.departure)) return false;
-        return Objects.equals(arrival, flight.arrival);
+        if (!Objects.equals(from, flight.from)) return false;
+        return Objects.equals(to, flight.to);
     }
 
     @Override
     public int hashCode() {
-        int result = departure != null ? departure.hashCode() : 0;
-        result = 31 * result + (arrival != null ? arrival.hashCode() : 0);
+        int result = from != null ? from.hashCode() : 0;
+        result = 31 * result + (to != null ? to.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Flight{" +
-                "departure='" + departure + '\'' +
-                ", arrival='" + arrival + '\'' +
-                '}';
+        return from + " to " + to;
     }
 }

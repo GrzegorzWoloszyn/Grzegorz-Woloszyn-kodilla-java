@@ -13,42 +13,33 @@ public class FindFlight {
         this.flight = flight;
     }
 
-    public List<Flight> findFlightTo() {
+    public List<Flight> findFlightTo(String flightTo) {
         List<Flight> flights = createFlightList.getAllFlights();
 
         return flights.stream()
-                .filter(flight1 -> flight1.getArrival().equals(flight.getArrival()))
+                .filter(flight1 -> flight1.getTo().equals(flightTo))
                 .collect(Collectors.toList());
     }
 
-    public List<Flight> findFlightFrom() {
+    public List<Flight> findFlightFrom(String flightFrom) {
         List<Flight> flights = createFlightList.getAllFlights();
 
         return flights.stream()
-                .filter(flight1 -> flight1.getDeparture().equals(flight.getDeparture()))
+                .filter(flight1 -> flight1.getFrom().equals(flightFrom))
                 .collect(Collectors.toList());
     }
 
-//    public  List<Pair<Flight, Flight>> findConnectingFlight() {
-//        List<Pair<Flight, Flight>> pairList = createFlightList.getAllPairs();
-//        return pairList.stream()
-//                .filter(fP -> flight.getArrival().equals(fP.getValue().getArrival()) && fP.getKey().getArrival().equals(fP.getValue().getDeparture()))
-//               .collect(Collectors.toList());
-//    }
-
-    public  List<Flight>  findConnectingFlight2() {
+    public List<FlightPair> findIndirectFlights() {
         List<Flight> flights = createFlightList.getAllFlights();
-
-        List<Flight> finalList = new ArrayList<>();
-
+        List<FlightPair> pairList = new ArrayList<>();
         for(Flight fl : flights) {
             flights.stream()
-                    .filter(f -> f.getDeparture().equals(flight.getDeparture()))
-                    .filter(fp -> fp.getDeparture().equals(flight.getDeparture()) && fp.getArrival().equals(fl.getDeparture()))
-                    .distinct()
-                    .forEach(finalList::add);
+                    .filter(f -> f.getFrom().equals(flight.getFrom()))
+                    .filter(fp -> fp.getFrom().equals(flight.getFrom()) && fp.getTo().equals(fl.getFrom()))
+                    .forEach(f -> pairList.add(new FlightPair(f, flight)));
         }
-        return finalList.stream()
+
+        return pairList.stream()
                 .distinct()
                 .collect(Collectors.toList());
     }

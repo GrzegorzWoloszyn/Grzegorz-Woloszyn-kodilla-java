@@ -1,7 +1,5 @@
 package flightSearcher;
 
-import javafx.util.Pair;
-
 import java.util.List;
 
 public class FlightProcessor {
@@ -14,21 +12,15 @@ public class FlightProcessor {
         this.findFlight = findFlight;
     }
 
-    public List<Flight> processForDeparture() {
-        return findFlight.findFlightFrom();
+    public List<Flight> findFlightFrom(Flight flight) {
+        return findFlight.findFlightFrom(flight.getFrom());
     }
 
-    public List<Flight> processForArrival() {
-        return findFlight.findFlightTo();
+    public List<Flight> findFlightTo(Flight flight) {
+        return findFlight.findFlightTo(flight.getTo());
     }
 
-//    public List<Pair<Flight, Flight>> processForConnectedFlights() {
-//        return findFlight.findConnectingFlight();
-//    }
-
-    public List<Flight> processForConnectedFlights() {
-        return findFlight.findConnectingFlight2();
+    public List<FlightPair> findIndirect() {
+        return findFlight.findIndirectFlights();
     }
-
-
 }

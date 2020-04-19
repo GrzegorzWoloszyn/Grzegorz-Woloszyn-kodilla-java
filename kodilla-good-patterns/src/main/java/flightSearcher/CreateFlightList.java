@@ -1,7 +1,5 @@
 package flightSearcher;
 
-import javafx.util.Pair;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,17 +19,4 @@ public class CreateFlightList {
 
                 return new ArrayList<>(flights);
         }
-
-        public List<Pair<Flight, Flight>> getAllPairs() {
-
-                List<Pair<Flight, Flight>> pairList = new ArrayList<>();
-                pairList.add(new Pair<>(new Flight("Warszawa", "Kraków"),new Flight("Kraków", "Wilno")));
-                pairList.add(new Pair<>(new Flight("Warszawa", "Kraków"), new Flight("Kraków", "Londyn")));
-                pairList.add(new Pair<>(new Flight("Warszawa", "Lódź"),new Flight("Lódź", "Londyn")));
-                pairList.add(new Pair<>(new Flight("Lódź", "Kraków"), new Flight("Kraków", "Londyn")));
-                pairList.add(new Pair<>(new Flight("Lódź", "Kraków"), new Flight("Kraków", "Wilno")));
-
-                return pairList;
-        }
-
 }
