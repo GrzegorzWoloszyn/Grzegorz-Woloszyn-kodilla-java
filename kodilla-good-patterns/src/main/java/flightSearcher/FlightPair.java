@@ -40,6 +40,6 @@ public class FlightPair {
 
     @Override
     public String toString() {
-        return "" + one.getTo();
+        return one.getTo();
     }
 }
