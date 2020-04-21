@@ -6,44 +6,34 @@ import java.util.stream.Collectors;
 
 public class FlightProcessor {
 
-    CreateFlightList createFlightList = new CreateFlightList();
+    List<Flight> list;
 
-    public FlightProcessor() {
-    }
-
-    List<Flight> inIt() {
-        List<Flight> temporaryList = createFlightList.getAllFlights();
-        return temporaryList;
+    public FlightProcessor(List<Flight> list) {
+        this.list = list;
     }
 
     public List<Flight> findFlightFrom(String flightFrom) {
-        List<Flight> flights = inIt();
-
-        return flights.stream()
+        return list.stream()
                 .filter(flight1 -> flight1.getFrom().equals(flightFrom))
                 .collect(Collectors.toList());
     }
 
     public List<Flight> findFlightTo(String flightTo) {
-        List<Flight> flights = inIt();
-
-        return flights.stream()
+        return list.stream()
                 .filter(flight1 -> flight1.getTo().equals(flightTo))
                 .collect(Collectors.toList());
     }
 
-    public List<FlightPair> findIndirect(Flight flightFromTo) {
-        List<Flight> flights = inIt();
-        List<FlightPair> pairList = new ArrayList<>();
-        for(Flight fl : flights) {
-            flights.stream()
-                    .filter(f -> f.getFrom().equals(flightFromTo.getFrom()))
-                    .filter(fp -> fp.getFrom().equals(flightFromTo.getFrom()) && fp.getTo().equals(fl.getFrom()))
-                    .forEach(f -> pairList.add(new FlightPair(f, flightFromTo)));
+    public List<FlightPair> findIndirect(String from, String to) {
+        List<FlightPair> intermediateFlights = new ArrayList<>();
+        List<Flight> flightsFrom = findFlightFrom(from);
+        for (Flight flightFrom : flightsFrom) {
+            intermediateFlights.addAll(findFlightFrom(flightFrom.getTo()).stream()
+                    .filter(flight -> flight.getTo().equals(to))
+                    .map(flight -> new FlightPair(flightFrom, flight))
+                    .collect(Collectors.toList()));
         }
 
-        return pairList.stream()
-                .distinct()
-                .collect(Collectors.toList());
+        return intermediateFlights;
     }
 }

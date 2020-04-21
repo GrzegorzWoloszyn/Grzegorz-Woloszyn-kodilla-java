@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CreateFlightList {
 
-        public List<Flight> getAllFlights () {
+        public static List<Flight> getAllFlights () {
 
                 List<Flight> flights = new ArrayList<>();
                 flights.add(new Flight("Warszawa", "Kraków"));

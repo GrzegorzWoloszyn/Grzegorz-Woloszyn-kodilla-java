@@ -1,6 +1,5 @@
 package flightSearcher;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Flight {
@@ -40,6 +39,6 @@ public class Flight {
 
     @Override
     public String toString() {
-        return from + " to " + to;
+        return from + " >> " + to;
     }
 }
