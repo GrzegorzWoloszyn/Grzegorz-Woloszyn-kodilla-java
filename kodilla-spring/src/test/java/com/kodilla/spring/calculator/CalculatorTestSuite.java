@@ -22,7 +22,7 @@ public class CalculatorTestSuite {
         Assert.assertEquals(15.6, sum, 0.001);
         Assert.assertEquals(-4.6, subRsult, 0.001);
         Assert.assertEquals(55.55, product, 0.001);
-        Assert.assertEquals(0.544, quotient, 0.01);
+        Assert.assertEquals(0.544, quotient, 0.001);
 
     }
 }
