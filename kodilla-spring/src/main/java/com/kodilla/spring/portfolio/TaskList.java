@@ -11,17 +11,8 @@ public class TaskList {
         this.tasks = new ArrayList<>();
     }
 
-    public List<String> addTask() {
-        tasks.add("New Task");
+    public List<String> getTasks() {
         return tasks;
     }
 
-    public String getTasks() {
-        return tasks.get(0);
-    }
-
-    @Override
-    public String toString() {
-        return " " + tasks;
-    }
 }
