@@ -41,7 +41,7 @@ public class Library extends Prototype {
         Library deepClonedLibrary = (Library)super.clone();
         deepClonedLibrary.books = new HashSet<>();
         for(Book theBook : books) {
-            deepClonedLibrary.getBooks().add(theBook);
+            deepClonedLibrary.getBooks().add(new Book(theBook.getTitle(), theBook.getAuthor(), theBook.getPublicationDate()));
         }
         return deepClonedLibrary;
     }
