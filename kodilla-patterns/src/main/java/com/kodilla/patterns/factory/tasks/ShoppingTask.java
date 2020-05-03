@@ -13,7 +13,7 @@ public final class ShoppingTask implements Task {
 
     @Override
     public void executeTask() {
-        System.out.println("Task: '" + taskName + "', in progress: buying " + whatToBuy + " ," + quantity + " pieces.");
+        System.out.println("Task: '" + taskName + "' in progress, buying: " + whatToBuy + ", " + quantity + " pieces.");
     }
 
     @Override

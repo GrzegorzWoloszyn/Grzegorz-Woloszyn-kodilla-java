@@ -13,7 +13,7 @@ public final class PaintingTask implements Task {
 
     @Override
     public void executeTask() {
-        System.out.println("Task: '" + taskName + "', in progress: painting " + whatToPaint + " with " + color + " color.");
+        System.out.println("Task: '" + taskName + "', in progress, painting: " + whatToPaint + " with " + color + " color.");
     }
 
     @Override
