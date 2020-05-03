@@ -21,7 +21,7 @@ public class SettingsFileEngineTestSuite {
     @Test
     public void testGetFileName() {
         //Given
-        //Whne
+        //When
         String fileName = SettingsFileEngine.getInstance().getFileName();
         System.out.println("Opened: " + fileName);
         //Then
