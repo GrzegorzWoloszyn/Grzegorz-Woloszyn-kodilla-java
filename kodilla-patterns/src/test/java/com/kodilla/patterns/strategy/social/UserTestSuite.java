@@ -13,13 +13,8 @@ public class UserTestSuite {
 
         //When
         String adamUse = adam.sharePost();
-        System.out.println("Adam posts on " + adamUse);
-
         String ewaUse = ewa.sharePost();
-        System.out.println("Ewa posts on " + ewaUse);
-
         String mietekUse = mietek.sharePost();
-        System.out.println("Mietek posts on " + mietekUse);
 
         //Then
         Assert.assertEquals("Facebook.", adamUse);
@@ -33,10 +28,8 @@ public class UserTestSuite {
        User adam = new Millenials("Adam Adam");
        //When
        String adamUse = adam.sharePost();
-       System.out.println("Adam posts on " + adamUse);
        adam.setSocialMedia(new SnapchatPublisher());
        adamUse = adam.sharePost();
-       System.out.println("Adam posts on " + adamUse);
        //Then
        Assert.assertEquals("Snapchat.", adamUse);
    }
