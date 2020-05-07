@@ -1,14 +1,12 @@
 package com.kodilla.hibernate.task.dao;
 
 import com.kodilla.hibernate.task.Task;
-import com.mysql.cj.conf.DatabaseUrlContainer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +49,7 @@ public class TaskDaoTestSuite {
         Assert.assertEquals(3, readTasks.size());
 
         //Cleanup
-        int id = readTasks.get.getId();
+        int id = readTasks.get(0).getId();
         taskDao.deleteById(id);
 
     }
