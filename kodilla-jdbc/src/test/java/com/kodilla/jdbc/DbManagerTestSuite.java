@@ -1,9 +1,3 @@
-package com.kodilla.jdbc;
-
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.net.UnknownServiceException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,29 +35,6 @@ public class DbManagerTestSuite {
         Assert.assertEquals(5, counter);
     }
 
-    @Test
-    public void testSelectedUsersAndPosts() throws SQLException {
-        //Given
-        DbManager dbManager = DbManager.getInstance();
 
-        //When
-        String sqlQuery = "SELECT U.FIRSTNAME, U.LASTNAME, COUNT(*) AS POST_NUMBER FROM USERS U JOIN POSTS P ON U.ID = P.USER_ID GROUP BY P.USER_ID HAVING COUNT(*) > 1";
-        Statement statement = dbManager.getConnection().createStatement();
-        ResultSet rs = statement.executeQuery(sqlQuery);
-
-        //Then
-        int usersWithMinimum2Posts = 0;
-        while(rs.next()) {
-            System.out.println(rs.getInt("POST_NUMBER") + ", " +
-                    rs.getString("FIRSTNAME") + " " +
-                    rs.getString("LASTNAME")
-            );
-            usersWithMinimum2Posts++;
-        }
-        rs.close();
-        statement.close();
-
-        Assert.assertEquals(3, usersWithMinimum2Posts);
-    }
 
 }
