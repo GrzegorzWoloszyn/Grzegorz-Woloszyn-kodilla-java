@@ -1,7 +1,4 @@
-package com.kodilla.jdbc;
 
-import org.junit.Assert;
-import org.junit.Test;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
