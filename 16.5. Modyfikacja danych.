@@ -1,0 +1,32 @@
+//1. Dodanie nowego postu do tabeli POSTS:
+
+INSERT INTO POSTS(USER_ID, BODY)
+VALUE(1, "Monday.");
+
+INSERT INTO POSTS(USER_ID, BODY)
+VALUE(2, "Tuesday");
+
+INSERT INTO POSTS(USER_ID, BODY)
+VALUE(3, "Wednesday");
+ commit;
+
+//2. Modyfikacje w dodanym rekordzie wartość pola BODY i ustawienia jej na "To delete":
+ 
+ UPDATE POSTS
+ SET BODY = "TO DELETE"
+ WHERE ID = 7;
+ COMMIT;
+ UPDATE POSTS
+ SET BODY = "TO DELETE"
+ WHERE ID = 8;
+ COMMIT;
+ UPDATE POSTS
+ SET BODY = "TO DELETE"
+ WHERE ID = 9;
+ 
+COMMIT;
+
+//3. Usunięcie dodany przed chwilą rekord:
+DELETE FROM POSTS
+WHERE BODY = "TO DELETE";
+COMMIT;
