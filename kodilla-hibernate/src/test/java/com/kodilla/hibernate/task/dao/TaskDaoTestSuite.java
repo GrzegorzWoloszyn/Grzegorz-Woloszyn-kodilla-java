@@ -50,9 +50,9 @@ public class TaskDaoTestSuite {
         //Then
         Assert.assertEquals(3, readTasks.size());
 
-        //Cleanup
-        int id = readTasks.get.getId();
-        taskDao.deleteById(id);
+//        //Cleanup
+//        int id = readTasks.get.getId();
+//        taskDao.deleteById(id);
 
     }
 }
