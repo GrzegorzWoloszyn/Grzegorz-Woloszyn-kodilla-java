@@ -25,12 +25,11 @@ public class Product {
         return id;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "ITEMS_ID")
     public Item getItem() {
         return item;

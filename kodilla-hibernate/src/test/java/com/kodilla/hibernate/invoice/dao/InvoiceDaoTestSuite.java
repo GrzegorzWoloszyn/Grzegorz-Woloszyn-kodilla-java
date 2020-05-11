@@ -27,22 +27,23 @@ public class InvoiceDaoTestSuite {
         Product cream = new Product("Hand cream");
 
         Item item = new Item(new BigDecimal(100), 10, new BigDecimal(1000));
-        pc.setItem(item);
-        car.setItem(item);
-        bed.setItem(item);
-        cream.setItem(item);
+        item.getProducts().add(pc);
+        item.getProducts().add(car);
+        item.getProducts().add(bed);
+        item.getProducts().add(cream);
 
         pc.setItem(item);
         car.setItem(item);
         bed.setItem(item);
         cream.setItem(item);
 
-        Invoice invoice = new Invoice("The first Invoice.");
+        Invoice invoice = new Invoice("1");
         invoice.getItems().add(item);
+        item.setInvoice(invoice);
 
         //When
         invoiceDao.save(invoice);
-        int id = invoice.getId();
+        int id = item.getId();
 
         //Then
         Assert.assertEquals(1, id);

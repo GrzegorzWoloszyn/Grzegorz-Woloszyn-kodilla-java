@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ITEMS")
@@ -12,7 +14,7 @@ public class Item {
     private BigDecimal price;
     private int quantity;
     private BigDecimal value;
-    private Product product;
+    private List<Product> products = new ArrayList<>();
     private Invoice invoice;
 
     public Item(BigDecimal price, int quantity, BigDecimal value) {
@@ -48,8 +50,8 @@ public class Item {
             mappedBy = "item",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
     @ManyToOne
@@ -78,7 +80,7 @@ public class Item {
         this.value = value;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
