@@ -16,9 +16,7 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class InvoiceDaoTestSuite {
     @Autowired
-    ProductDao productDao;
     InvoiceDao invoiceDao;
-    ItemDao itemDao;
 
     @Test
     public void testInvoiceDaoSave() {
@@ -34,7 +32,12 @@ public class InvoiceDaoTestSuite {
         bed.setItem(item);
         cream.setItem(item);
 
-        Invoice invoice = new Invoice("The first");
+        pc.setItem(item);
+        car.setItem(item);
+        bed.setItem(item);
+        cream.setItem(item);
+
+        Invoice invoice = new Invoice("The first Invoice.");
         invoice.getItems().add(item);
 
         //When
@@ -46,6 +49,5 @@ public class InvoiceDaoTestSuite {
 
         //Cleanup
         invoiceDao.deleteById(id);
-
     }
 }

@@ -27,31 +27,27 @@ public class Item {
     @Id
     @NotNull
     @GeneratedValue
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
 
-    @NotNull
-    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    @NotNull
-    @Column(name = "QUANITY")
     public int getQuantity() {
         return quantity;
     }
 
-    @NotNull
-    @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @OneToMany(
+            targetEntity = Product.class,
+            mappedBy = "item",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     public Product getProduct() {
         return product;
     }

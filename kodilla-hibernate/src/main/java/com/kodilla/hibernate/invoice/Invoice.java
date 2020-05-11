@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.invoice;
 
 import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +20,14 @@ public class Invoice {
     public Invoice() {
     }
 
-    @NotNull
     @Id
+    @NotNull
     @GeneratedValue
-    @Column(name = "ID")
-    public int getId() {
+     public int getId() {
         return id;
     }
 
     @NotNull
-    @Column(name = "NUMBER")
     public String getNumber() {
         return number;
     }
@@ -39,9 +36,7 @@ public class Invoice {
             targetEntity = Item.class,
             mappedBy = "invoice",
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
-
+            fetch = FetchType.LAZY)
     public List<Item> getItems() {
         return items;
     }

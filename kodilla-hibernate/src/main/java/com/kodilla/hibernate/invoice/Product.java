@@ -21,23 +21,17 @@ public class Product {
     @Id
     @NotNull
     @GeneratedValue
-    @Column(name = "ID")
     public int getId() {
         return id;
     }
 
-    @NotNull
     @Column(name = "NAME")
     public String getName() {
         return name;
     }
 
-    @OneToMany(
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
+    @ManyToOne()
+    @JoinColumn(name = "ITEMS_ID")
     public Item getItem() {
         return item;
     }
