@@ -24,31 +24,39 @@ public class InvoiceDaoTestSuite {
         Product pc = new Product("PersonalComputer");
         Product car = new Product("Ford Fiesta");
         Product bed = new Product("Water bed");
-        Product cream = new Product("Hand cream");
 
-        Item item = new Item(new BigDecimal(100), 10, new BigDecimal(1000));
-        item.getProducts().add(pc);
-        item.getProducts().add(car);
-        item.getProducts().add(bed);
-        item.getProducts().add(cream);
-
-        pc.setItem(item);
-        car.setItem(item);
-        bed.setItem(item);
-        cream.setItem(item);
+        Item pcItem = new Item(new BigDecimal(100.79), 10);
+        Item carItem = new Item(new BigDecimal(1000.99), 2);
+        Item bedItem = new Item(new BigDecimal(250.50), 5);
 
         Invoice invoice = new Invoice("1");
-        invoice.getItems().add(item);
-        item.setInvoice(invoice);
+        pcItem.setProduct(pc);
+        pcItem.setInvoice(invoice);
+
+        carItem.setProduct(car);
+        carItem.setInvoice(invoice);
+
+        bedItem.setProduct(bed);
+        bedItem.setInvoice(invoice);
+
+        pc.getItemList().add(pcItem);
+        car.getItemList().add(carItem);
+        bed.getItemList().add(bedItem);
+
+        invoice.getItems().add(pcItem);
+        invoice.getItems().add(carItem);
+        invoice.getItems().add(bedItem);
 
         //When
         invoiceDao.save(invoice);
-        int id = item.getId();
+        int id = invoice.getId();
 
         //Then
-        Assert.assertEquals(1, id);
+        Assert.assertNotEquals(0, id);
 
         //Cleanup
-        invoiceDao.deleteById(id);
+        try {
+            invoiceDao.deleteById(id);
+        } catch (Exception e) {}
     }
 }
