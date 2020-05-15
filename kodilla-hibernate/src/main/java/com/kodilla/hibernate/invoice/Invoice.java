@@ -41,6 +41,10 @@ public class Invoice {
         return items;
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
     public void setId(int id) {
         this.id = id;
     }
