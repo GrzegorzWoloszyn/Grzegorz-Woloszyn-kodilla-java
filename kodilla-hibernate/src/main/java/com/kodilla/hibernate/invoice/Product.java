@@ -1,7 +1,6 @@
 package com.kodilla.hibernate.invoice;
 
 import com.sun.istack.NotNull;
-import org.graalvm.compiler.nodes.java.ArrayLengthNode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 public class Product {
     private int id;
     private String name;
-    private List<Item> itemList = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 
     public Product(String name) {
         this.name = name;
@@ -37,12 +36,12 @@ public class Product {
             mappedBy = "product",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY    )
-    public List<Item> getItemList() {
-        return itemList;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setItem(List<Item> items) {
-        this.itemList= items;
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 
     public void setId(int id) {

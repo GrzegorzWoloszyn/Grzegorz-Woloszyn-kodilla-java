@@ -39,9 +39,9 @@ public class InvoiceDaoTestSuite {
         bedItem.setProduct(bed);
         bedItem.setInvoice(invoice);
 
-        pc.getItemList().add(pcItem);
-        car.getItemList().add(carItem);
-        bed.getItemList().add(bedItem);
+        pc.getItems().add(pcItem);
+        car.getItems().add(carItem);
+        bed.getItems().add(bedItem);
 
         invoice.addItem(pcItem);
         invoice.addItem(carItem);
