@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 package com.kodilla.jdbc;
 
 import org.junit.Assert;
 import org.junit.Test;
+=======
+
+>>>>>>> 07fa6df528f3ae56c10c83110bc0f202f2baf1a6
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
