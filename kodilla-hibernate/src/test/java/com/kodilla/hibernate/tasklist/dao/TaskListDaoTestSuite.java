@@ -1,5 +1,6 @@
 package com.kodilla.hibernate.tasklist.dao;
 
+import com.kodilla.hibernate.task.Task;
 import com.kodilla.hibernate.tasklist.TaskList;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,6 +35,15 @@ public class TaskListDaoTestSuite {
 
         //Cleanup
         taskListDao.deleteById(toDo.getId());
+    }
+
+    @Test
+    public void testNamedQueries() {
+        //Given
+        Task task1 = new Task("Test: study Hibernate.", 3);
+        Task task2 = new Task("Test: practice named queries.", 6);
+        Task task3 = new Task("Test: study native queries.", 7);
+        Task task4 = new Task("Test: make some tests.", 13);
 
     }
 }
