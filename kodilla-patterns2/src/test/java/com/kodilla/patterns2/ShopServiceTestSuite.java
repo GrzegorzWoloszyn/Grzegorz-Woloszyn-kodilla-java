@@ -5,7 +5,7 @@ import com.kodilla.patterns2.facade.api.ItemDto;
 import com.kodilla.patterns2.facade.api.OrderDto;
 import com.kodilla.patterns2.facade.api.OrderFacade;
 import com.kodilla.patterns2.facade.api.OrderProcessingException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,9 +26,7 @@ public class ShopServiceTestSuite {
     @Test
     public void testShopServiceSubmitOrder() {
         long orderId = shopService.openOrder(1L);
-
-        System.out.println("Registering new order, Id: " + orderId);
-
+        System.out.println("Registering new order, ID: " + orderId);
         if (orderId > 0) {
             shopService.addItem(orderId, 10L, 2);
             System.out.println("Adding item: 10, 2 pcs");
@@ -40,7 +38,6 @@ public class ShopServiceTestSuite {
             System.out.println("Adding item: 100, 2.5 pcs");
             shopService.addItem(orderId, 11L, 3);
             System.out.println("Adding item: 11, 3 pcs");
-
             if (shopService.removeItem(orderId, 100L)) {
                 System.out.println("Item 100 was deleted from order");
             } else {
