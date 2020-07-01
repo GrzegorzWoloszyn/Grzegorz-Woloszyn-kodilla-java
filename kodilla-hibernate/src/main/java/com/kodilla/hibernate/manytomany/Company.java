@@ -9,7 +9,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithTheSpecialBeginning",
-        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(NAME, 1, 3) LIKE :NAME",
+        query = "SELECT * FROM COMPANIES WHERE NAME LIKE %NAME%",
         resultClass = Company.class)
 @Entity
 @Table(name = "COMPANIES")
