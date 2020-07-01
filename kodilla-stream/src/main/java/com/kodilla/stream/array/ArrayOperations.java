@@ -1,7 +1,5 @@
 package com.kodilla.stream.array;
 
-import sun.jvm.hotspot.ui.tree.SimpleTreeGroupNode;
-
 import java.util.stream.IntStream;
 
 public interface ArrayOperations {
