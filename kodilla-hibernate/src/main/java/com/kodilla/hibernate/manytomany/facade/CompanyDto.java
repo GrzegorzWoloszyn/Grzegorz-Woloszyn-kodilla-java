@@ -11,23 +11,23 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES WHERE NAME LIKE %NAME%",
         resultClass = Company.class)
 
-public final class CompanyDto {
+class CompanyDto {
     private String name;
     List<EmployeeDto> employees = new ArrayList<>();
 
-    public CompanyDto(String name) {
+     CompanyDto(String name) {
         this.name = name;
     }
 
-    public void addEmployee(final EmployeeDto employeeDto) {
+    void addEmployee(final EmployeeDto employeeDto) {
         employees.add(employeeDto);
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public List<EmployeeDto> getEmployees() {
+    List<EmployeeDto> getEmployees() {
         return employees;
     }
 }

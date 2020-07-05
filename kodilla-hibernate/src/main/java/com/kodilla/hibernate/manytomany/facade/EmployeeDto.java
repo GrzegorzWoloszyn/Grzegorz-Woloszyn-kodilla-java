@@ -9,7 +9,7 @@ import java.util.List;
 @NamedQuery(
         name = "Employee.retrieveEmployeesWithSpecificLastName",
         query = "FROM Employee WHERE lastName = %LASTNAME%")
-public final class EmployeeDto {
+class EmployeeDto {
     private String firstName;
     private String lastName;
     List<CompanyDto> companies = new ArrayList<>();
@@ -19,19 +19,19 @@ public final class EmployeeDto {
         this.lastName = lastName;
     }
 
-    public void addCompany(final CompanyDto companyDto) {
+    void addCompany(final CompanyDto companyDto) {
         companies.add(companyDto);
     }
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
-    public List<CompanyDto> getCompanies() {
+    List<CompanyDto> getCompanies() {
         return companies;
     }
 }
