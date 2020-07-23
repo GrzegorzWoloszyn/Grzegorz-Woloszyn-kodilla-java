@@ -16,7 +16,6 @@ public class SearchFacadeTestSuite {
     @Test
     public void testSearchFacade() {
 
-
         CompanyDto softwareMachine = new CompanyDto("Software Machine");
         CompanyDto dataMaesters = new CompanyDto("Data Maesters");
         CompanyDto greyMatter = new CompanyDto("Grey Matter");
@@ -40,7 +39,13 @@ public class SearchFacadeTestSuite {
         lindaKovalsky.addCompany(greyMatter);
 
         try {
-                searchFacade.processSearching("eph", "val");
+                searchFacade.processSearchingCompany("eph");
+        }catch (SearchProcessingException searchProcessingException) {
+            System.out.println(searchProcessingException);
+        }
+
+        try {
+            searchFacade.processSearchingCompany("val");
         }catch (SearchProcessingException searchProcessingException) {
             System.out.println(searchProcessingException);
         }

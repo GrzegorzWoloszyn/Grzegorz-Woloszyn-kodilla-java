@@ -8,7 +8,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesWithTheSpecialBeginning",
-        query = "SELECT * FROM COMPANIES WHERE NAME LIKE %NAME%",
+        query = "SELECT * FROM COMPANIES WHERE NAME LIKE :NAME",
         resultClass = Company.class)
 
 class CompanyDto {
