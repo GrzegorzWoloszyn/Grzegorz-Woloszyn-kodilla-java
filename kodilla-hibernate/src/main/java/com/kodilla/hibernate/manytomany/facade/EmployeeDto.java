@@ -8,7 +8,7 @@ import java.util.List;
 
 @NamedQuery(
         name = "Employee.retrieveEmployeesWithSpecificLastName",
-        query = "FROM Employee WHERE lastName = %LASTNAME%")
+        query = "FROM Employee WHERE lastName = :LASTNAME")
 class EmployeeDto {
     private String firstName;
     private String lastName;
