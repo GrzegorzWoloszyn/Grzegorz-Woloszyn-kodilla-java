@@ -71,6 +71,7 @@ public class CalculatorTestSuite {
         BigDecimal result = calculator.factorial(new BigDecimal(1000));
 
         //Then
+        LOGGER.info("Testing factorial method");
         System.out.println(result);
         assertTrue(BigDecimal.ONE.compareTo(result) < 0);
     }
