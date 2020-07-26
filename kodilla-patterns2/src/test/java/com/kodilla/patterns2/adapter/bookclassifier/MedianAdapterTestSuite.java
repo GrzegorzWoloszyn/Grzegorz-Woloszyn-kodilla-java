@@ -25,7 +25,7 @@ public class MedianAdapterTestSuite {
 
         //Then
         System.out.println(books);
-        Assert.assertEquals(2010, result);
+        Assert.assertEquals(2015, result);
     }
 
     @Test
@@ -36,14 +36,13 @@ public class MedianAdapterTestSuite {
         books2.add(new Book("Author1", "Title1", 2000, "Signature1"));
         books2.add(new Book("Author2", "Title2", 2020, "Signature2"));
         books2.add(new Book("Author3", "Title3", 2015, "Signature3"));
-        books2.add(new Book("Author4", "Title4", 2010, "Signature4"));
+        books2.add(new Book("Author4", "Title4", 2011, "Signature4"));
         books2.add(new Book("Author5", "Title5", 1990, "Signature5"));
 
         //When
         int result = medianAdapter.publicationYearMedian(books2);
 
         //Then
-        System.out.println(books2);
-        Assert.assertEquals(2010, result);
+        Assert.assertEquals(2011, result);
     }
 }
