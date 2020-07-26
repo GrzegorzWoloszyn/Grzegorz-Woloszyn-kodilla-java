@@ -17,7 +17,7 @@ public class HomeworkQueue implements HomeworkObservable {
 
     public void addHomework(String title) {
         homeworks.add(title);
-        notifyObserver();
+        notifyObservers();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class HomeworkQueue implements HomeworkObservable {
     }
 
     @Override
-    public void notifyObserver() {
+    public void notifyObservers() {
         for (MentorObserver mentor : mentors) {
             mentor.update(this);
         }
