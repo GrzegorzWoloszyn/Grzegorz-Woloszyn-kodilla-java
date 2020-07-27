@@ -23,4 +23,24 @@ public class Book {
     public int getYearOfPublication() {
         return yearOfPublication;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (yearOfPublication != book.yearOfPublication) return false;
+        if (!author.equals(book.author)) return false;
+        return title.equals(book.title);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = author.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + yearOfPublication;
+        return result;
+    }
 }

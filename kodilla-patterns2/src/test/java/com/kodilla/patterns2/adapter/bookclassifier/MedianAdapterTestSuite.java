@@ -24,7 +24,6 @@ public class MedianAdapterTestSuite {
         int result = medianAdapter.publicationYearMedian(books);
 
         //Then
-        System.out.println(books);
         Assert.assertEquals(2015, result);
     }
 

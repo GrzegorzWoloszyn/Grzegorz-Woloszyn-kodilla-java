@@ -38,4 +38,26 @@ public class Book {
                 ", publicationYear =" + publicationYear +
                 ", signature ='" + signature + '\''+ "\n";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Book)) return false;
+
+        Book book = (Book) o;
+
+        if (publicationYear != book.publicationYear) return false;
+        if (!author.equals(book.author)) return false;
+        if (!title.equals(book.title)) return false;
+        return signature.equals(book.signature);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = author.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + publicationYear;
+        result = 31 * result + signature.hashCode();
+        return result;
+    }
 }
