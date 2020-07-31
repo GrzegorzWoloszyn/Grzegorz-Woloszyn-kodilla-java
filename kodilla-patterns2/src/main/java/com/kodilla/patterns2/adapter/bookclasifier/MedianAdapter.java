@@ -4,29 +4,26 @@ import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Classifier;
 import com.kodilla.patterns2.adapter.bookclasifier.libraryb.BookSignature;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class MedianAdapter extends MedianAdaptee implements Classifier {
 
     @Override
-    public int publicationYearMedian( Set<Book> bookSet) {
-        Map<BookSignature, com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> books = new HashMap<>();
-        Iterator<Book> iterator = bookSet.stream()
-                .iterator();
+    public int publicationYearMedian (Set<Book> bookSet) {
 
-        while( iterator.hasNext()) {
-            Book book = iterator.next();
-            com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book bookB = mapBookAToBookB(book);
-            books.put(new BookSignature(book.getSignature()), bookB);
-        }
+        Map<BookSignature, com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book> books = bookSet.stream()
+            .collect(Collectors.toMap(this::createSignature, this::mapBookAToBookB));
+
         return medianPublicationYear(books);
     }
 
-    private static com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book mapBookAToBookB( Book book) {
+    private com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book mapBookAToBookB(Book book) {
         return new com.kodilla.patterns2.adapter.bookclasifier.libraryb.Book
                 (book.getAuthor(), book.getTitle(), book.getPublicationYear());
+    }
+    private BookSignature createSignature(Book book) {
+        return new BookSignature(book.getSignature());
     }
 }
