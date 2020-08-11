@@ -1,9 +1,8 @@
-package com.kodilla.testing2.config;
+package com.kodilla.testing2;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 
 public class WebDriverConfig {
     public final static String FIREFOX = "FIREFOX_DRIVER";
