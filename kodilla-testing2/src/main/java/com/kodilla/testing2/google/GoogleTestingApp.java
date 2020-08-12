@@ -7,14 +7,14 @@ import org.openqa.selenium.WebElement;
 
 public class GoogleTestingApp {
 
-    public static final String SEARCHFIELD = "lst-ib";
+    public static final String SEARCHFIELD ="q";
 
     public static void main (String[] args) {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
-        driver.get("https://www.google.com");
+        driver.get("https://www.google.pl");
 
-        WebElement searchField = driver.findElement(By.id(SEARCHFIELD));
+        WebElement searchField = driver.findElement(By.name(SEARCHFIELD));
         searchField.sendKeys("Kodilla");
         searchField.submit();
-        }
+    }
 }
