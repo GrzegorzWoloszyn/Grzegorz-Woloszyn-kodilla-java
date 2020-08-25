@@ -77,6 +77,7 @@ public class CrudAppTestSuite {
         driverTrello.get(TRELLO_URL);
 
         driverTrello.findElement(By.id("user")).sendKeys("do.logowan01@gmail.com");
+        driverTrello.findElement(By.id("password")).sendKeys("T900424haslo01!");
         WebElement element = driverTrello.findElement(By.id("login"));
         element.submit();
 
